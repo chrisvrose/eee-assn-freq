@@ -1,0 +1,22 @@
+{
+  "name": "eee-assn-freq",
+  "version": "1.0.0",
+  "description": "Project for Semester 2 - Program to calculate the effect of change in frequency on the series AC circuit",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisvrose/eee-assn-freq.git"
+  },
+  "author": "Christopher Rose",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisvrose/eee-assn-freq/issues"
+  },
+  "homepage": "https://github.com/chrisvrose/eee-assn-freq#readme",
+  "dependencies": {
+    "electron": "^4.0.5"
+  }
+}
