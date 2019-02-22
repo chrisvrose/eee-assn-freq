@@ -4,7 +4,7 @@ let graphSet = []
 
 
 app.on('ready',()=>{
-    let win = new BrowserWindow({show:false,minWidth:854})
+    let win = new BrowserWindow({show:false,minWidth:854,minHeight:480})
 
     let graphingwin = new BrowserWindow({show:false,parent:win})
 
