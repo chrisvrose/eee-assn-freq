@@ -17,10 +17,8 @@
   },
   "homepage": "https://github.com/chrisvrose/eee-assn-freq#readme",
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "electron": "^4.0.5",
     "jquery": "^3.3.1",
-    "mathjs": "^5.5.0",
-    "popper.js": "^1.14.7"
+    "mathjs": "^5.5.0"
   }
 }
