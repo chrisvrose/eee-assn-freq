@@ -1,5 +1,6 @@
 const {app,BrowserWindow,ipcMain}= require('electron');
 
+let graphSet = []
 
 
 app.on('ready',()=>{
@@ -30,13 +31,18 @@ app.on('ready',()=>{
     // Change or delete the existing graphs -
     // args[0] - true or false, true - modify, false - clear all
     // args[1] - JSON object to represent plot
-    ipcMain.on('modifyGraphs',(e,args)=>{
+    ipcMain.on('modG',(event,args)=>{
         if(args[0]){
             // change graphs
+            graphSet.push(args[1])
+            event.sender.send('modGR',graphSet);
         }
         else{
             // nerf
+            graphSet.length = 0;
+            event.sender.send('modGR',graphSet);
         }
+        
     })
 
 
