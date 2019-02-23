@@ -2,7 +2,7 @@
   "name": "eee-assn-freq",
   "version": "1.0.0",
   "description": "Project for Semester 2 - Program to calculate the effect of change in frequency on the series AC circuit",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "electron ."
   },
