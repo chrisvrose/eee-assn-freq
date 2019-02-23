@@ -1,5 +1,21 @@
+@font-face{
+	font-family: OpenSans;
+	src: url('./font/OpenSans/OpenSans.ttf');
+}
+@font-face{
+	font-family: OpenSans;
+	src: url('./font/OpenSans/OpenSans-Light.ttf');
+	font-weight: lighter;
+}
+@font-face{
+	font-family: OpenSans;
+	src: url('./font/OpenSans/OpenSans-Light.ttf');
+	font-weight: bold;
+}
+
+
 body{
-	font-family: Ariel, Helvetica, sans-serif;
+	font-family: OpenSans, sans-serif;
 	background-color:#f4f4f4;
 	margin:0;
 }
