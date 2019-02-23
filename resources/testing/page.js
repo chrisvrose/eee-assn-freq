@@ -1,6 +1,6 @@
 const {ipcRenderer} = require('electron');
 //ipcRenderer.send('setGWV',true);
-// Wrap them in an onload so that they tag on when everything is ready
+// Wrap them in an onload so that they tag onto the page elements when everything is ready
 window.addEventListener('load',()=>{
     document.getElementById('gs').addEventListener('click',()=>{
         ipcRenderer.send('setGWV',true);
@@ -11,11 +11,13 @@ window.addEventListener('load',()=>{
     })
 
     document.getElementById('gsin').addEventListener('click',()=>{
+        // PH - Got the data
         ipcRenderer.on('modGR',(e,x)=>{document.getElementById('something').innerHTML = x;})
         ipcRenderer.send('modG',[true,'sin(x)'])
     })
 
     document.getElementById('grem').addEventListener('click',()=>{
+        // PH - Got the data
         ipcRenderer.on('modGR',(e,x)=>{document.getElementById('something').innerHTML = x;})
         ipcRenderer.send('modG',[false])
     })

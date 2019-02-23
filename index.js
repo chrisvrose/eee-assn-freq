@@ -21,11 +21,11 @@ app.on('ready',()=>{
 
     // event that will be passed will have true or false based on whether to show or hide
     ipcMain.on('setGWV',(e,args)=>{
-        console.log(args);
+        console.log(args)
         if(args)
-            graphingwin.show();
+            graphingwin.show()
         else
-            graphingwin.hide();
+            graphingwin.hide()
     })
 
     // Change or delete the existing graphs -
@@ -35,19 +35,17 @@ app.on('ready',()=>{
         if(args[0]){
             // change graphs
             graphSet.push(args[1])
-            event.sender.send('modGR',graphSet);
         }
         else{
             // nerf
             graphSet.length = 0;
-            event.sender.send('modGR',graphSet);
         }
+        // Send the updated module to the master window
+        event.sender.send('modGR',graphSet);
+        // Send the updates graphset to the plotting window, passing through main as main recieves it anyways
+        graphingwin.webContents.send('modGR',graphSet);
         
     })
-
-
-
-     
 });
 
 app.on('window-all-closed',()=>{app.exit()})
