@@ -45,13 +45,22 @@ img{
 	grid-column: 1 / span 2;
 }
 
-#diagram{
-	margin-top: 100px;
-	margin-left: 30px;
-	margin-bottom: 30px;
-	
-
+.values{
+	margin: 20px;
+	margin-left: 70px;
 }
+
+.values2{
+	margin: 20px;
+	margin-left: 185px;
+}
+
+#diagram{
+	margin-top: 0;
+	margin-left: 30px;
+	margin-bottom: 0px;
+}
+	
 
 #output{
 	grid-row: 2 / span 1;
