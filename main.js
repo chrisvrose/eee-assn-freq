@@ -13,7 +13,7 @@ app.on('ready',()=>{
     graphingwin.setMenuBarVisibility(false)
 
     // For regular window
-    win.loadFile('./resources/testing/index.html')
+    win.loadFile('./resources/index.html')
     win.setMenuBarVisibility(false)
     win.on('ready-to-show',()=>{win.show()})
 
