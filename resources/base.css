@@ -28,13 +28,13 @@ body{
 .container{
 	display: grid;
 	grid-template-columns: repeat(3,1fr);
-	grid-auto-rows: 2em repeat(2,1fr);
+	grid-auto-rows: auto 1fr;
 	height: 100vh;
 	
 }
 .titleBar{
 	-webkit-app-region: drag;
-	height:2em;
+	height:2.5em;
 	background-color: orange;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	grid-row:1;
