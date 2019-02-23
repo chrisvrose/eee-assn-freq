@@ -12,25 +12,28 @@
                 <div class="titleBar"></div>
             <div class="grid-item" id="circuit">
                 <h3>Circuit</h3>
-			<input class="values" type="text" name="resistance">
-			<input class="values" type="text" name="inductance">
-			<input class="values" type="text" name="capacitance">
-			<img id="diagram" src="circuit.jpg" alt="RLC circuit"><br>
-			<input class="values2" type="text" name="voltage">
-			<input  type="text" name="frequency">
+                <br />
+			    <img id="diagram" src="circuit.jpg" alt="RLC circuit" />
 			</div>
             <div class="grid-item" id="input"><h3>Input</h3>
 				<form>
-				Source Voltage(RMS)<br>
-				<input type = "text" name="voltage"><br>
-				Resistance<br>
-				<input type = "text" name="resistance"><br>
-				Inductance<br>
-				<input type = "text" name="Inductance"><br>
-				Capacitance<br>
-				<input type = "text" name="Capacitance"><br>
-				<button type = "submit" id="submit">Submit</button>
-			
+                    <div class="inputGroup">
+                        <input type="number" step="any" min="0" required id="iV" />
+				        <label for="iV">V<sub>rms</sub></label>
+                    </div>
+                    <div class="inputGroup">
+                        <input type="number" step="any" min="0" required  id="iR" />
+				        <label for="iR">R</label>
+                    </div>
+                    <div class="inputGroup">
+                            <input type="number" step="any" min="0" required  id="iR" />
+                            <label for="iR">L</label>
+                    </div>
+                    <div class="inputGroup">
+                            <input type="number" step="any" min="0" required  id="iR" />
+                            <label for="iR">C</label>
+                    </div>
+                </form>
 			</div>
             <div class="grid-item" id="output">
                 <h3>Output</h3>
