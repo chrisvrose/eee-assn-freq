@@ -1,3 +1,14 @@
 body{
-    padding:1em;
+	font: 15px/1.5 Ariel, Helvetica;
+	padding:5;
+	margin:10;
+	
+}
+
+.container{
+	background-color:#f4f4f4;
+}
+
+body #input{
+	float:right;
 }
