@@ -9,11 +9,11 @@ app.on('ready',()=>{
     let graphingwin = new BrowserWindow({show:false,parent:win})
 
     // For graphing window
-    graphingwin.loadFile('resources/grapher.html')
+    graphingwin.loadFile('./resources/grapher.html')
     graphingwin.setMenuBarVisibility(false)
 
     // For regular window
-    win.loadFile('resources/testing/index.html')
+    win.loadFile('./resources/testing/index.html')
     win.setMenuBarVisibility(false)
     win.on('ready-to-show',()=>{win.show()})
 
