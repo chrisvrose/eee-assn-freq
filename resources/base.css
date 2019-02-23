@@ -24,12 +24,9 @@ body{
 }
 
 body #input{
-<<<<<<< HEAD
 	/*float:right;*/
 	grid-row: 1 / 1;
 	grid-column: 3 / 3;
-=======
-	float:right;
 	border-style: groove;
 	border-color: #0000ff;
 	margin-right: 20px;
@@ -47,6 +44,5 @@ body #output{
 	float:right;
 	border-style: groove;
 	border-color: #0000ff;
->>>>>>> ae95d595e60e25c39889d6fe4b5e46402cae9512
 	
 }
