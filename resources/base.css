@@ -1,44 +1,29 @@
 body{
-	font: 15px/1.5 Ariel, Helvetica;
-	padding:5;
-	margin:10;
-	
+	font-family: Ariel, Helvetica, sans-serif;
+	padding:2em;
+	background-color:#f4f4f4;
 }
   
 .container{
-	background-color:#f4f4f4;
 	display: grid;
-	grid-gap: 1em;
-	
+	grid-gap: .1em;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.grid-item{
+	background-color: #c4c4c4;
+	padding:1em;
+	width:auto;
 }
 
 #circuit{
-	grid-row: 1 / 2;
-	grid-column: 1 / 2;
+	grid-row: 1 / span 2;
+	grid-column: 1 / span 2;
 }
-
-
 #output{
-	grid-row: 2 / 2;
-	grid-column: 3 / 3;
+	grid-row: 2;
+	grid-column: 3;
 }
-
-body #input{
-	/*float:right;*/
-	grid-row: 1 / 1;
-	grid-column: 3 / 3;
-	border-style: groove;
-	border-color: #0000ff;
-	padding:20px; 
-}
-
-body #input #submit{
-	border-style: groove;
-	border-color: #f4f4f4;
-}
-
-body #output{
-	border-style: groove;
-	border-color: #0000ff;
-	
+#input{
+	grid-row: 1;
+	grid-column: 3;
 }
