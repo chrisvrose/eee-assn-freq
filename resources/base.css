@@ -140,7 +140,15 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
-
+.knobContainer{
+	position: relative;
+}
+#iF{
+	position: absolute;
+	top:2em;
+	left:45%;
+	width: 2em;
+}
 button:active{
 	outline:none;
 }

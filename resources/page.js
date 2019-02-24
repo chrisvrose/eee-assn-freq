@@ -11,8 +11,13 @@ $('document').ready(()=>{
         'height':100,
 
         'change': (v)=>{
-            document.getElementById('knobText').innerHTML = math.round(v);
+            $("#iF").val(math.round(v));
         }
     });
+    $('#iF').on('input',(e)=>{
+        $(".dial").val(e.target.value).trigger('change');
+    })
 })
+
+
 //ipcRenderer.send('setGWV',true);
