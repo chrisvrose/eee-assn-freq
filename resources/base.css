@@ -100,7 +100,7 @@ h3{
 	position: relative;
 }
 input{
-	
+	transition: 0.25s ease all;
 	padding: 0.75em 0.75em 0.75em 0.25em;
   	display:block;
 	width:90%;
@@ -115,7 +115,11 @@ input ~ label{
 	position: absolute;
 	left:5px;
   	top:10px;
-  	transition:0.2s ease all; 
+  	transition:0.25s ease all; 
+}
+
+input:focus, input:valid{
+	border-bottom-color: #5264AE;
 }
 
 input:focus ~ label, input:valid ~ label{
