@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Window</title>
-		<link rel="stylesheet" href="./base.css">
-        <script>require('./page.js');</script>
+        <link rel="stylesheet" href="./base.css">
+        <script src='./page.js'></script>
+        <script src="jquery.knob.js"></script>
+        
     </head>
     <body>
         <div class="container">
@@ -13,7 +15,7 @@
             <div class="grid-item" id="circuit">
                 <h3>Circuit</h3>
                 <br />
-			    <img id="diagram" src="circuit.jpg" alt="RLC circuit" />
+			    <img style="margin:auto" id="diagram" src="circuit.jpg" alt="RLC circuit" />
 			</div>
             <div class="grid-item" id="input"><h3>Input</h3>
 				<form>
@@ -33,10 +35,16 @@
                             <input type="number" step="any" min="0" required  id="iR" />
                             <label for="iR">C</label>
                     </div>
+                    <div class='knobContainer'>
+                        <input type="text" value="75" class="dial" data-cursor="true" data-displayInput="false" data-width="50" data-height="50" />
+                        <div id="knobText"></div>
+                    </div>
                 </form>
 			</div>
             <div class="grid-item" id="output">
                 <h3>Output</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora aliquid animi eos velit? Suscipit itaque tenetur deleniti sit neque recusandae, mollitia laudantium ut unde voluptas. Sed qui veritatis cupiditate nam.
+
             </div>
         </div>
     </body>

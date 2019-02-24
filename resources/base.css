@@ -92,38 +92,59 @@ img{
 }
 
 h3{
+	margin-top:.125em;
 	margin-bottom:.25em;
+	text-align: center;
+}
+form{
 	text-align: center;
 }
 .inputGroup{
 	margin-top: 0.5em;
 	position: relative;
 }
-input{
+input[type="number"]{
+	margin:auto;
 	transition: 0.25s ease all;
-	padding: 0.75em 0.75em 0.75em 0.25em;
+	padding: 0.75em 0.5em 0.5em 0.5em;
   	display:block;
-	width:90%;
+	width:95%;
 	border:0;
 	border-bottom:1px solid #c4c4c4;
 }
-input:focus{
+input[type="number"]:focus{
 	outline:none;
 }
 
-input ~ label{
+input[type="number"] ~ label{
+	color:#aaaaaa;
 	position: absolute;
-	left:5px;
-  	top:10px;
-  	transition:0.25s ease all; 
+	left: 0.5em;
+  	top: 0.5em;
+	transition:0.25s ease all; 
+	user-select: none;  
 }
 
-input:focus, input:valid{
+input[type="number"]:focus, input[type="number"]:valid{
 	border-bottom-color: #5264AE;
 }
 
-input:focus ~ label, input:valid ~ label{
+input[type="number"]:focus ~ label, input[type="number"]:valid ~ label{
 	top:-0.4em;
 	font-size:0.6em;
 	color:#5264AE;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+button:active{
+	outline:none;
+}
+
+.knobContainer{
+	margin-top:1em;
 }

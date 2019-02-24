@@ -3,10 +3,11 @@ const {app,BrowserWindow,ipcMain}= require('electron');
 let graphSet = []
 
 
-app.on('ready',()=>{
-    let win = new BrowserWindow({show:false,minWidth:854,minHeight:480,frame:false})
 
-    let graphingwin = new BrowserWindow({show:false,parent:win})
+app.on('ready',()=>{
+    let win = new BrowserWindow({show:false,minWidth:1280,minHeight:720,frame:false,webPreferences:{devTools:true}})
+
+    let graphingwin = new BrowserWindow({show:false,minWidth:1280,minHeight:720,frame:false,webPreferences:{devTools:false},parent:win})
 
     // For graphing window
     graphingwin.loadFile('./resources/grapher.html')
