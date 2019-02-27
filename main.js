@@ -1,3 +1,6 @@
+/*
+
+*/
 const {app,BrowserWindow,ipcMain}= require('electron');
 
 let graphSet = []
@@ -17,7 +20,7 @@ app.on('ready',()=>{
     win.loadFile('./resources/index.html')
     win.setMenuBarVisibility(false)
     win.on('ready-to-show',()=>{win.show()})
-
+    
 
 
     // event that will be passed will have true or false based on whether to show or hide

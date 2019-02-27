@@ -15,7 +15,26 @@
             <div class="grid-item" id="circuit">
                 <h3>Circuit</h3>
                 <br />
-			    <img style="margin:auto" id="diagram" src="circuit.jpg" alt="RLC circuit" />
+                <h6>PH</h6>
+                <div class="circuit-block" height="40%">
+                <div class="circuit-wrapper">
+                    <div class="circuit-values">
+                        <table class="circuit-table">
+                            <tbody>
+                                <tr>
+                                    <td id="cR">PH</td>
+                                    <td id="cL">PH</td>
+                                    <td id="cC">PH</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="circuit-container">
+                        <img id="diagram" src="./pn.png" alt="RLC circuit" />
+                    </div>
+                </div>    
+            </div>
+            <div class="cV" >PH</div>
 			</div>
             <div class="grid-item" id="input"><h3>Input</h3>
 				<form>
@@ -38,11 +57,13 @@
                     <div class='knobContainer'>
                         <input type="text" value="75" class="dial" data-cursor="true" data-displayInput="false"  />
                         <input type="number" step="any" min="0" required  id="iF" />
+                        <div>Frequency (Hz)</div>
                     </div>
                 </form>
 			</div>
             <div class="grid-item" id="output">
                 <h3>Output</h3>
+                <h6>PH</h6>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora aliquid animi eos velit? Suscipit itaque tenetur deleniti sit neque recusandae, mollitia laudantium ut unde voluptas. Sed qui veritatis cupiditate nam.
 
             </div>
