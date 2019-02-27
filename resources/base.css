@@ -1,6 +1,6 @@
 @font-face{
 	font-family: OpenSans;
-	src: url('./font/OpenSans/OpenSans.ttf');
+	src: url('./font/OpenSans/OpenSans-Regular.ttf');
 	font-weight: normal;
 }
 @font-face{
@@ -32,6 +32,12 @@ body{
 	height: 100vh;
 	
 }
+
+
+.pad-20p{
+	height:20%;
+}
+
 .titleBar{
 	-webkit-app-region: drag;
 	height:2.5em;
@@ -176,6 +182,8 @@ button:active{
 .knobContainer{
 	margin-top:1em;
 }
+
+
 
 
 tr.eqSpE> td{
