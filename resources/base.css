@@ -189,3 +189,17 @@ button:active{
 tr.eqSpE> td{
 	width:33%;
 }
+.mat-button{
+	padding:0.5em;
+	background-color:#5264AE;
+	color:#ffffff;
+	border: 2px solid #41508c;
+	border-radius: 2px;
+	outline: none;
+	transition: 0.25s ease all;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.mat-button:active {
+	outline:none;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
