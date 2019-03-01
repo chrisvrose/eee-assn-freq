@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer,remote } = require('electron');
 const math = require('mathjs');
 window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery');
 
@@ -7,6 +7,12 @@ let resultStates = {X: NaN, Z: NaN,i:NaN,P:NaN,Q:NaN,S:NaN,phi:NaN,cphi:NaN}
 
 
 $('document').ready(() => {
+    $(".titleBarClose").on('click',e=>{
+        remote.getCurrentWindow().close()
+    })
+    $('.titleBarMinimize').on('click',e=>{
+        remote.getCurrentWindow().minimize()
+    })
     $(".dial").knob({
         'min': 0,
         'step': 1, 

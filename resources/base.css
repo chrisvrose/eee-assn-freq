@@ -39,13 +39,36 @@ body{
 }
 
 .titleBar{
-	-webkit-app-region: drag;
+	display:grid;
+	grid-template-columns: 1fr 5em;
 	height:2.5em;
 	background-color: orange;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	grid-row:1;
 	grid-column: 1 / span 3;
-	
+	user-select: none;  
+}
+.titleBarDrag{
+	-webkit-app-region: drag;
+	height:100%;
+	grid-row:1;
+	grid-column: 1;
+}
+
+.titleBarButtons{
+	font-size: 1.25em;
+	position: relative;
+	grid-row:1;
+	grid-column: 2;
+	text-align: center;
+	margin: auto;
+	-webkit-app-region: no-drag;
+}
+.titleBarClose{
+	margin-left:.75em;
+}
+.titleBarClose:active , .titleBarMinimize:active{
+	color:#5264AE;
 }
 
 .grid-item{
@@ -199,6 +222,9 @@ tr.eqSpE> td{
 	transition: 0.25s ease all;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+
+
+
 .mat-button:active {
 	outline:none;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);

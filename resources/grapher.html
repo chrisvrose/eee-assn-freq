@@ -3,14 +3,23 @@
     <head>
         <title>Plots</title>
         <script>require('./graphing.js')</script>
-        <link href="base.css" rel="stylesheet" />
+        <link href="./graphing.css" rel="stylesheet" />
         
     </head>
     <body>
         <div class="container">
-            <div class="titleBar"></div>
-            I AM AN ATTEMPT TO GRAPH
-            <span id="gC">I AM A PLACE TO PUT GRAPH DATA IN</span>
+            <div class="titleBar">
+                    <div class="titleBarDrag"></div>
+                    <div class="titleBarButtons">
+                            <span class="titleBarMinimize">_</span>
+                            <span class="titleBarClose">&times;</span>
+                    </div>
+            </div>
+            <div class="grid-item">
+                    I AM AN ATTEMPT TO GRAPH
+                    <span id="gC">I AM A PLACE TO PUT GRAPH DATA IN</span>
+            </div>
+            
         </div>
     </body>
 </html>

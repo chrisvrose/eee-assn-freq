@@ -1,25 +1,29 @@
-/*
 
-*/
 const {app,BrowserWindow,ipcMain}= require('electron');
 
+let win = null;
+let graphingwin = null;
 
-function initGrapher(){
-    let g = new BrowserWindow({show:false,minWidth:854,minHeight:720,frame:false,webPreferences:{devTools:true}});
-    g.loadFile('./resources/grapher.html')
-    g.setMenuBarVisibility(false)
-    g.on('ready-to-show',()=>{g.show()})
-    return g;
+graphSet = []
+
+function initGrapher(functionCall= ()=>{}){
+    graphingwin = new BrowserWindow({show:false,minWidth:854,minHeight:720,frame:false,webPreferences:{devTools:true}/*,parent:win*/});
+    graphingwin.loadFile('./resources/grapher.html')
+    graphingwin.setMenuBarVisibility(false)
+    graphingwin.on('closed',()=>{
+        graphingwin = null
+        graphSet.length = 0
+    })
+    graphingwin.on('ready-to-show',()=>{
+        graphingwin.show();
+        functionCall();
+    })
+    return graphingwin;
 }
 
 
 app.on('ready',()=>{
-    let win = new BrowserWindow({show:false,minWidth:1280,minHeight:720,frame:false,webPreferences:{devTools:true}})
-
-    let graphingwin = initGrapher();
-
-    // For graphing window
-    // For regular window
+    win = new BrowserWindow({show:false,minWidth:1280,minHeight:720,frame:false,webPreferences:{devTools:true}})
     win.loadFile('./resources/index.html')
     win.setMenuBarVisibility(false)
     win.on('ready-to-show',()=>{win.show()})
@@ -29,11 +33,25 @@ app.on('ready',()=>{
     // args[1] - array of json object to represent currentstate and results calculated
     ipcMain.on('modG',(event,args)=>{
         // Send the updated module to the master window
+        console.log(args[0]+" "+graphingwin)
         if(args[0]&&!graphingwin){
-            graphingwin = initGrapher()
-            
+            initGrapher(()=>{
+                graphingwin.webContents.send('modGR',graphSet)
+            })
+            console.log("OPEN")
+
+            //Copied from last else
+            graphSet.push(args[1])
         }
-        if(!args[0]&&graphingwin) {graphingwin.close();graphingwin=null;}
+        else if(!args[0]&&graphingwin) {
+            graphingwin.close()
+            graphingwin=null
+            graphSet.length = 0
+        }
+        else if(graphingwin){
+            graphSet.push(args[1])
+            graphingwin.webContents.send('modGR',graphSet)
+        }
         
         // Send the updates graphset to the plotting window, passing through main as main recieves it anyways
         
