@@ -2,12 +2,14 @@ const { ipcRenderer } = require('electron');
 const math = require('mathjs');
 window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery');
 
-let currentState = { V: 230, F: 100, R: 100, L: .001, C: 0.000001 }
+let currentState = { V: 230, F: 100, R: 100, L: .15, C: 0.0001 }
+let resultStates = {X: NaN, Z: NaN,i:NaN,P:NaN,Q:NaN,S:NaN,phi:NaN,cphi:NaN}
+
 
 $('document').ready(() => {
     $(".dial").knob({
         'min': 0,
-        'step': 1,
+        'step': 1, 
         'max': 1000,
         'width': 100,
         'height': 100,
@@ -42,15 +44,21 @@ $('document').ready(() => {
         $('#cC').html(`${e.target.value}`)
         updateCurrentSet(parseFloat(e.target.value),3)
     })
+    $('#addGS').on('click',e=>{
+        ipcRenderer.send('setGWV',true);
+    })
+    $('#clearGS').on('click',e=>{
+        ipcRenderer.send('setGWV',false);
+    })
 
 
 
 
-    $('#iV').val(230);
-    $('#iR').val(48400);
-    $('#iL').val(0.001);
-    $('#iC').val(.000005);
-    $('#iF').val(50);
+    $('#iV').val(currentState.V);
+    $('#iR').val(currentState.R);
+    $('#iL').val(currentState.L);
+    $('#iC').val(currentState.C);
+    $('#iF').val(currentState.F);
 
     //$().on
     ['#iV','#iR','#iL','#iC','iF'].forEach(element => {
@@ -90,9 +98,19 @@ function updateCurrentSet(valueObject, val = 1) {
     return valueObject;
 }
 
+function setResults(rState){
+    [["#oX",rState.X],['#oZ',rState.Z],['#oPhi',rState.phi],["#cI",rState.phi]].forEach(element=>{
+        $(element[0]).html(math.round(element[1],2))
+    })
+    return null;
+}
 
 function calculateResults(cState){
-    
+    resultStates.X = 2*Math.PI*cState.F*cState.L - 1/(2*Math.PI*cState.F*cState.C)
+    resultStates.Z = Math.sqrt(resultStates.X * resultStates.X + cState.R*cState.R)
+    resultStates.phi = 180*Math.atan2(resultStates.X, currentState.R)/Math.PI
+
+    setResults(resultStates)
     return null;
 }
 

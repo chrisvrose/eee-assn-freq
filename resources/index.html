@@ -37,7 +37,7 @@
                                     <tr class="eqSpE">
                                         <td id="tDummy"><span id="cDummy"></span></td>
                                         <td id="cVF"><span id="cV"></span>,<span id="cF"></span></td>
-                                        <td id="cIW">i = </td>
+                                        <td id="cIW">i = <span id="cI"></span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -45,8 +45,8 @@
                     </div>    
                 </div>
                 <div style="text-align: center;margin-top:7.5%;">
-                    <button class="mat-button" type="button">Add to Graph</button>
-                    <button class="mat-button" type="button">Clear and Close Graph</button>
+                    <button class="mat-button" type="button" id="addGS">Add to Graph</button>
+                    <button class="mat-button" type="button" id="clearGS">Clear and Close Graph</button>
                 </div>
 			</div>
             <div class="grid-item" id="input"><h3>Input</h3>
@@ -80,11 +80,11 @@
                     <tbody>
                         <tr>
                             <td id="">Reactance - X (&#8486;)</td>
-                            <td id=""></td>
+                            <td id="oX"></td>
                         </tr>
                         <tr>
                             <td id="">Impedance - Z (&#8486;)</td>
-                            <td id=""></td>
+                            <td id="oZ"></td>
                         </tr>
                         <tr>
                             <td id="">Real Power - P (W)</td>
@@ -100,7 +100,7 @@
                             </tr>
                         <tr>
                             <td id="">Phase Difference - &#981; (&#176;)</td>
-                            <td id=""></td>
+                            <td id="oPhi"></td>
                         </tr>
                         <tr>
                             <td id="">Power factor - cos(&#981;)</td>
