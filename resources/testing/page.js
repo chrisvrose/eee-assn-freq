@@ -22,6 +22,6 @@ window.addEventListener('load',()=>{
     document.getElementById('grem').addEventListener('click',()=>{
         // PH - Got the data
         ipcRenderer.on('modGR',(e,x)=>{document.getElementById('something').innerHTML = x;})
-        ipcRenderer.send('modG',[false],null)
+        ipcRenderer.send('modG',[false,null])
     })
 })

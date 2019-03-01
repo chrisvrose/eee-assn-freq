@@ -45,14 +45,11 @@ $('document').ready(() => {
         updateCurrentSet(parseFloat(e.target.value),3)
     })
     $('#addGS').on('click',e=>{
-        ipcRenderer.send('setGWV',true);
+        ipcRenderer.send('modG',[true,[currentState,resultStates] ])
     })
     $('#clearGS').on('click',e=>{
-        ipcRenderer.send('setGWV',false);
+        ipcRenderer.send('modG',[false,null])
     })
-
-
-
 
     $('#iV').val(currentState.V);
     $('#iR').val(currentState.R);
@@ -64,12 +61,6 @@ $('document').ready(() => {
     ['#iV','#iR','#iL','#iC','iF'].forEach(element => {
         $(element).trigger('input')
     });
-
-    
-    
-
-
-
 })
 
 
@@ -99,17 +90,23 @@ function updateCurrentSet(valueObject, val = 1) {
 }
 
 function setResults(rState){
-    [["#oX",rState.X],['#oZ',rState.Z],['#oPhi',rState.phi],["#cI",rState.phi]].forEach(element=>{
+    [ ["#oX",rState.X],['#oZ',rState.Z],['#oPhi',180*rState.phi/Math.PI],['#ocPhi',rState.cphi],["#cI",rState.i],["#oP",rState.P],["#oQ",rState.Q],["#oS",rState.S] ].forEach(element=>{
         $(element[0]).html(math.round(element[1],2))
     })
     return null;
 }
 
 function calculateResults(cState){
-    resultStates.X = 2*Math.PI*cState.F*cState.L - 1/(2*Math.PI*cState.F*cState.C)
+    resultStates.X = 2*Math.PI*cState.F*cState.L - (1/(2*Math.PI*cState.F*cState.C))
+    console.log(resultStates.X)
     resultStates.Z = Math.sqrt(resultStates.X * resultStates.X + cState.R*cState.R)
-    resultStates.phi = 180*Math.atan2(resultStates.X, currentState.R)/Math.PI
-
+    resultStates.phi = Math.atan2(resultStates.X, currentState.R)
+    resultStates.i = currentState.V/resultStates.Z;
+    resultStates.P = currentState.V*resultStates.i*(resultStates.cphi = Math.cos(resultStates.phi))
+    resultStates.Q = currentState.V*resultStates.i*Math.sin(resultStates.phi)
+    resultStates.S = currentState.V*resultStates.i
+    //resultStates.P = currentState.V * currentState.V / (resultStates.Z * resultStates.Z) * currentState.R;
+    console.log("UPDATE",cState)
     setResults(resultStates)
     return null;
 }
