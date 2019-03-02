@@ -29,9 +29,9 @@
                             <table class="circuit-table">
                                 <tbody>
                                     <tr class="eqSpE">
-                                        <td id="cR">PH</td>
-                                        <td id="cL">PH</td>
-                                        <td id="cC">PH</td>
+                                        <td><span id="cR">PH</span> &#8486;</td>
+                                        <td><span id="cL">PH</span> H</td>
+                                        <td><span id="cC">PH</span> F</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -44,8 +44,8 @@
                                 <tbody>
                                     <tr class="eqSpE">
                                         <td id="tDummy"><span id="cDummy"></span></td>
-                                        <td id="cVF"><span id="cV"></span>,<span id="cF">100</span></td>
-                                        <td id="cIW">i = <span id="cI"></span></td>
+                                        <td id="cVF"><span id="cV"></span> V,<span id="cF">100</span> Hz</td>
+                                        <td id="cIW">i = <span id="cI"></span> A</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -61,19 +61,19 @@
 				<form>
                     <div class="inputGroup">
                         <input type="number" step="any" min="0" required id="iV" />
-				        <label for="iV">V<sub>rms</sub></label>
+				        <label for="iV">Voltage - RMS (V)</sub></label>
                     </div>
                     <div class="inputGroup">
                         <input type="number" step="any" min="0" required  id="iR" />
-				        <label for="iR">R</label>
+				        <label for="iR">Resistance (&#8486;)</label>
                     </div>
                     <div class="inputGroup">
                             <input type="number" step="any" min="0" required  id="iL" />
-                            <label for="iL">L</label>
+                            <label for="iL">Inductance (H)</label>
                     </div>
                     <div class="inputGroup">
                             <input type="number" step="any" min="0" required  id="iC" />
-                            <label for="iC">C</label>
+                            <label for="iC">Capacitance(F)</label>
                     </div>
                     <div class='knobContainer'>
                         <input type="text" value="75" class="dial" data-cursor="true" data-displayInput="false"  />
