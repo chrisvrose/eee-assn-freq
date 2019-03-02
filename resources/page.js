@@ -104,7 +104,7 @@ function setResults(rState){
 
 function calculateResults(cState){
     resultStates.X = 2*Math.PI*cState.F*cState.L - (1/(2*Math.PI*cState.F*cState.C))
-    console.log(resultStates.X)
+    //console.log(resultStates.X)
     resultStates.Z = Math.sqrt(resultStates.X * resultStates.X + cState.R*cState.R)
     resultStates.phi = Math.atan2(resultStates.X, currentState.R)
     resultStates.i = currentState.V/resultStates.Z;
@@ -112,7 +112,7 @@ function calculateResults(cState){
     resultStates.Q = currentState.V*resultStates.i*Math.sin(resultStates.phi)
     resultStates.S = currentState.V*resultStates.i
     //resultStates.P = currentState.V * currentState.V / (resultStates.Z * resultStates.Z) * currentState.R;
-    console.log("UPDATE",cState)
+    //console.log("UPDATE",cState)
     setResults(resultStates)
     return null;
 }
