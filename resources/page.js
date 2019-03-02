@@ -97,7 +97,7 @@ function updateCurrentSet(valueObject, val = 1) {
 
 function setResults(rState){
     [ ["#oX",rState.X],['#oZ',rState.Z],['#oPhi',180*rState.phi/Math.PI],['#ocPhi',rState.cphi],["#cI",rState.i],["#oP",rState.P],["#oQ",rState.Q],["#oS",rState.S] ].forEach(element=>{
-        $(element[0]).html(math.round(element[1],2))
+        $(element[0]).html(math.round(element[1],4))
     })
     return null;
 }

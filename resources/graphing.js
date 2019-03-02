@@ -9,10 +9,6 @@ const math = require('mathjs')
 
 
 $(document).ready(function(){
-    plot.plot( document.getElementById('tester'), [{
-        x: [1, 2, 3, 4, 5],
-        y: [1, 2, 4, 8, 16] }], {
-        margin: { t: 0 } } );
     $(".titleBarClose").on('click',e=>{
         remote.getCurrentWindow().close()
     })
@@ -21,12 +17,37 @@ $(document).ready(function(){
     })
     ipcRenderer.on('modGR',(e,args)=>{
         // PH - got the required data
-        str=""
-        console.log("YEET")
+        let exps = []
+        let intervals = []
+        let traces = []
+        let maxF = 0
+        let maxV = 0
+        //console.log("YEET")
         args.forEach(element => {
-            str= str + `${element[0].V}`
+            if(element[0].F > maxF) maxF = element[0].F
+            if(element[0].V > maxV) maxV = element[0].V
+            exps.push( math.compile(`${element[0].V} * sin( 2*${Math.PI}*${element[0].F}*x + ${element[1].phi})`))
+            intervals.push( 0.1/(2*Math.PI*element[0].F) )
+            $('#gC').html($('#gC').html()+` ${element[0].V} *sin( 2&pi;x+ ${element[1].phi} ) , ${1/(2*Math.PI*element[0].F)}`)
         });
-        $('#gC').html(`${str}`)
+        //console.log(exps);
+        exps.forEach((element,index)=>{
+    
+            let xV = math.range(-50, 50, intervals[index]).toArray()
+            let yV = xV.map(x=>{ return element.eval({x: x}) })
+            traces.push({ x:xV,y: yV ,name:`V${index+1}`})
+        })
+        const options ={
+            margin: { t: 0 },
+            dragmode: "pan",
+            xaxis:{
+                range:[0,1/(maxF)]
+            },
+            yaxis:{
+                range:[-maxV*1.1,maxV*1.1]
+            }
+        }
+        plot.newPlot( document.getElementById('tester'), traces, options , {responsive:true});
         
     })
 })
