@@ -3,6 +3,7 @@ window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery')
 const plot = require('./plotly-latest');
 
 let num_cycles_to_plot = 25
+const plot_config={responsive:true,displaylogo: false}
 // Math usage
 //console.log(plot)
 
@@ -20,8 +21,7 @@ $(document).ready(function(){
     $('#iNC').on('input',e=>{
         num_cycles_to_plot = $('#iNC').val();
     })
-
-
+    plot.plot( document.getElementById('plot-container'),{margin: { t: 0 },dragmode: "pan"},plot_config)
     ipcRenderer.on('modGR',(e,args)=>{
         // PH - got the required data
         let exps = []
@@ -29,6 +29,19 @@ $(document).ready(function(){
         let traces = []
         let maxF = 0
         let maxV = 0
+        const prettyVals=[
+            math.round(args[args.length-1][0].V,4),
+            math.round(args[args.length-1][1].i,4),
+            math.round(args[args.length-1][1].phi,4),
+            math.round(2*Math.PI*args[args.length-1][0].F,4),
+            math.round(args[args.length-1][0].V*Math.SQRT2,4),
+            math.round(args[args.length-1][1].i*Math.SQRT2,4),
+        ]
+        const prettyToolTips=[
+            `${prettyVals[4]} * sin(${prettyVals[3]} * x + ${prettyVals[2]})`,
+            `${prettyVals[5]} * sin(${prettyVals[3]} * x + ${prettyVals[2]})`
+        ]
+        $('#ordered-plots').append(`<li id='plot-list-item'><span title="${prettyToolTips[0]}">V<sub>rms</sub> = ${prettyVals[0]}</span>,<br /><span title="${prettyToolTips[1]}">I<sub>rms</sub> = ${prettyVals[1]}</span>,<br /> &#981; = ${prettyVals[2]}</li>`);
         //console.log("YEET")
         args.forEach(element => {
             if(element[0].F > maxF) maxF = element[0].F
@@ -38,7 +51,7 @@ $(document).ready(function(){
                 math.compile(`${element[1].i} * sin( 2*${Math.PI}*${element[0].F}*x)`)
             ])
             intervals.push( 0.1/(2*Math.PI*element[0].F) )
-            //$('#gC').html($('#gC').html()+` ${element[0].V} *sin( 2&pi;x+ ${element[1].phi} ) , ${1/(2*Math.PI*element[0].F)}`)
+            
         });
         //console.log(exps);
         exps.forEach((element,index)=>{
@@ -68,7 +81,7 @@ $(document).ready(function(){
                 range:[-maxV*1.1,maxV*1.1]
             }
         }
-        plot.newPlot( document.getElementById('plot-container'), traces, options , {responsive:true,displaylogo: false});
+        plot.newPlot( document.getElementById('plot-container'), traces, options , plot_config);
         
     })
 })

@@ -6,7 +6,7 @@
     text-align: center;
 }
 .plot-header{
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1.2em;
 }
 #plot-container{
