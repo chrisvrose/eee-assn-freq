@@ -7,7 +7,7 @@ let graphingwin = null;
 graphSet = []
 
 function initGrapher(functionCall= ()=>{}){
-    graphingwin = new BrowserWindow({show:false,minWidth:854,minHeight:720,frame:false,webPreferences:{devTools:true}/*,parent:win*/});
+    graphingwin = new BrowserWindow({show:false,minWidth:854,minHeight:480,frame:false,webPreferences:{devTools:true}/*,parent:win*/});
     graphingwin.loadFile('./resources/grapher.html')
     graphingwin.setMenuBarVisibility(false)
     graphingwin.on('closed',()=>{
@@ -16,11 +16,13 @@ function initGrapher(functionCall= ()=>{}){
     })
     graphingwin.on('ready-to-show',()=>{
         graphingwin.show();
+        // Call passed lambda
         functionCall();
     })
     return graphingwin;
 }
 
+// Compare the objects of input to make sure they are identical
 function DeepCompareGS(ob1,ob2){
     let a = true;
     a = a && (ob1.V==ob2.V)
@@ -34,41 +36,48 @@ function DeepCompareGS(ob1,ob2){
 
 
 app.on('ready',()=>{
-    win = new BrowserWindow({show:false,minWidth:1280,minHeight:720,frame:false,webPreferences:{devTools:true}})
+    win = new BrowserWindow({
+        show:false,
+        minWidth:1280,
+        minHeight:720,
+        frame:false,
+        webPreferences:{
+            devTools:true
+        }
+    })
     win.loadFile('./resources/index.html')
     win.setMenuBarVisibility(false)
     win.on('ready-to-show',()=>{win.show()})
 
     // Change or delete the existing graphs -
-    // args[0] - true or false, true - modify, false - clear all
-    // args[1] - array of json object to represent currentstate and results calculated
+    // args[0]      - true or false, true - modify, false - clear all
+    // args[1]      - 
+    // args[1][0]   - Input results
+    // args[1][1]   - Calculated results
     ipcMain.on('modG',(event,args)=>{
         // Send the updated module to the master window
-        //console.log(args[0]+" "+graphingwin)
         if(args[0]&&!graphingwin){
-            
+            // Opening a new window, send it only after it is ready
+            // No need to check whether pushable, first element either way
             graphSet.push(args[1])
             initGrapher(()=>{
                 graphingwin.webContents.send('modGR',graphSet)
             })
-            //console.log("OPEN")
-
-            //Copied from last else
         }
         else if(!args[0]&&graphingwin) {
+            // Close window, dump window and empty stack
             graphingwin.close()
             graphingwin=null
             graphSet.length = 0
         }
         else if(graphingwin){
-            //if(args[1]!=graphSet[graphSet.length-1])\
-            //console.log(graphSet[graphSet.length-1][0]);
-            if(!DeepCompareGS(args[1][0],graphSet[graphSet.length-1][0]))
+            // Compare element-wise to determine need to re-send element
+            if(!DeepCompareGS(args[1][0],graphSet[graphSet.length-1][0])){
                 graphSet.push(args[1])
-            graphingwin.webContents.send('modGR',graphSet)
+                graphingwin.webContents.send('modGR',graphSet)
+            }
+                
         }
-        
-        // Send the updates graphset to the plotting window, passing through main as main recieves it anyways
         
     })
 });
