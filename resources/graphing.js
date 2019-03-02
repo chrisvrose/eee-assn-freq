@@ -1,6 +1,8 @@
 const {ipcRenderer,remote}= require('electron')
 window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery')
 const plot = require('./plotly-latest');
+
+let num_cycles_to_plot = 25
 // Math usage
 //console.log(plot)
 
@@ -15,6 +17,11 @@ $(document).ready(function(){
     $('.titleBarMinimize').on('click',e=>{
         remote.getCurrentWindow().minimize()
     })
+    $('#iNC').on('input',e=>{
+        num_cycles_to_plot = $('#iNC').val();
+    })
+
+
     ipcRenderer.on('modGR',(e,args)=>{
         // PH - got the required data
         let exps = []
@@ -35,11 +42,11 @@ $(document).ready(function(){
         });
         //console.log(exps);
         exps.forEach((element,index)=>{
-    
-            let xV = math.range(-50, 50, intervals[index]).toArray()
+            let maxRange = num_cycles_to_plot/maxF;
+            let xV = math.range(-maxRange, maxRange, intervals[index]).toArray()
             let yV = xV.map(x=>{ return element[0].eval({x: x}) })
 
-            let xI = math.range(-50, 50, intervals[index]).toArray()
+            let xI = math.range(-maxRange, maxRange, intervals[index]).toArray()
             let yI = xI.map(x=>{ return element[1].eval({x: x}) })
 
             traces.push({ x:xV,y: yV ,name:`V${index+1}`})
@@ -49,13 +56,19 @@ $(document).ready(function(){
             margin: { t: 0 },
             dragmode: "pan",
             xaxis:{
+                title:{
+                    text:"Time (t)"
+                },
                 range:[0,1/(maxF)]
             },
             yaxis:{
+                title:{
+                    text:"Voltage(V) Current(A)"
+                },
                 range:[-maxV*1.1,maxV*1.1]
             }
         }
-        plot.newPlot( document.getElementById('plot-container'), traces, options , {responsive:true});
+        plot.newPlot( document.getElementById('plot-container'), traces, options , {responsive:true,displaylogo: false});
         
     })
 })

@@ -5,6 +5,10 @@
     grid-row: 2;
     text-align: center;
 }
+.plot-header{
+    font-weight: bold;
+    font-size: 1.2em;
+}
 #plot-container{
     margin-top:2.5em;
     margin-left:auto;
