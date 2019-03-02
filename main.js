@@ -75,6 +75,7 @@ app.on('ready',()=>{
             if(!DeepCompareGS(args[1][0],graphSet[graphSet.length-1][0])){
                 graphSet.push(args[1])
                 graphingwin.webContents.send('modGR',graphSet)
+                graphingwin.focus()
             }
                 
         }
