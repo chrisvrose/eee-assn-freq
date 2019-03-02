@@ -28,7 +28,7 @@ function DeepCompareGS(ob1,ob2){
     a = a&& (ob1.C==ob2.C)
     a = a&& (ob1.R==ob2.R)
     a = a&& (ob1.F==ob2.F)
-    console.log("A ",a)
+    //console.log("A ",a)
     return a
 }
 
@@ -44,14 +44,14 @@ app.on('ready',()=>{
     // args[1] - array of json object to represent currentstate and results calculated
     ipcMain.on('modG',(event,args)=>{
         // Send the updated module to the master window
-        console.log(args[0]+" "+graphingwin)
+        //console.log(args[0]+" "+graphingwin)
         if(args[0]&&!graphingwin){
             
             graphSet.push(args[1])
             initGrapher(()=>{
                 graphingwin.webContents.send('modGR',graphSet)
             })
-            console.log("OPEN")
+            //console.log("OPEN")
 
             //Copied from last else
         }
@@ -62,7 +62,7 @@ app.on('ready',()=>{
         }
         else if(graphingwin){
             //if(args[1]!=graphSet[graphSet.length-1])\
-            console.log(graphSet[graphSet.length-1][0]);
+            //console.log(graphSet[graphSet.length-1][0]);
             if(!DeepCompareGS(args[1][0],graphSet[graphSet.length-1][0]))
                 graphSet.push(args[1])
             graphingwin.webContents.send('modGR',graphSet)
