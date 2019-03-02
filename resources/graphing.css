@@ -1,2 +1,6 @@
 @import url('./base.css');
 
+#graphContainer{
+    grid-column: 1 / span 2;
+    grid-row: 2;
+}
