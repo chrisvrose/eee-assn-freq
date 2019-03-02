@@ -3,4 +3,10 @@
 #graphContainer{
     grid-column: 1 / span 2;
     grid-row: 2;
+    text-align: center;
+}
+#tester{
+    
+    width:30em;
+    height:30em;
 }
