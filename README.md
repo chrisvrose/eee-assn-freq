@@ -5,4 +5,4 @@ Languages used: `HTML`,`CSS`,`Javascript`
 
 Base: `nodeJS` + `electron`
 
-Dependencies: `electron`,`math.js`
+Dependencies: `electron`,`math.js`,`plotly.js`,`jquery`
