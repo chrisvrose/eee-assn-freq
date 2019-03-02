@@ -38,8 +38,8 @@ $(document).ready(function(){
             math.round(args[args.length-1][1].i*Math.SQRT2,4),
         ]
         const prettyToolTips=[
-            `${prettyVals[4]} * sin(${prettyVals[3]} * x + ${prettyVals[2]})`,
-            `${prettyVals[5]} * sin(${prettyVals[3]} * x + ${prettyVals[2]})`
+            `v = ${prettyVals[4]} * sin(${prettyVals[3]} * x + ${prettyVals[2]})`,
+            `i = ${prettyVals[5]} * sin(${prettyVals[3]} * x)`
         ]
         $('#ordered-plots').append(`<li id='plot-list-item'><span title="${prettyToolTips[0]}">V<sub>rms</sub> = ${prettyVals[0]}</span>,<br /><span title="${prettyToolTips[1]}">I<sub>rms</sub> = ${prettyVals[1]}</span>,<br /> &#981; = ${prettyVals[2]}</li>`);
         //console.log("YEET")
@@ -47,8 +47,8 @@ $(document).ready(function(){
             if(element[0].F > maxF) maxF = element[0].F
             if(element[0].V > maxV) maxV = element[0].V
             exps.push([
-                math.compile(`${element[0].V} * sin( 2*${Math.PI}*${element[0].F}*x + ${element[1].phi})`),
-                math.compile(`${element[1].i} * sin( 2*${Math.PI}*${element[0].F}*x)`)
+                math.compile(`${element[0].V*Math.SQRT2} * sin( 2*${Math.PI}*${element[0].F}*x + ${element[1].phi})`),
+                math.compile(`${element[1].i*Math.SQRT2} * sin( 2*${Math.PI}*${element[0].F}*x)`)
             ])
             intervals.push( 0.1/(2*Math.PI*element[0].F) )
             
@@ -62,8 +62,8 @@ $(document).ready(function(){
             let xI = math.range(-maxRange, maxRange, intervals[index]).toArray()
             let yI = xI.map(x=>{ return element[1].eval({x: x}) })
 
-            traces.push({ x:xV,y: yV ,name:`V${index+1}`})
-            traces.push({ x:xI,y: yI ,name:`I${index+1}`})
+            traces.push({ x:xV,y: yV ,name:`v${index+1}`})
+            traces.push({ x:xI,y: yI ,name:`i${index+1}`})
         })
         const options ={
             margin: { t: 0 },
@@ -78,7 +78,7 @@ $(document).ready(function(){
                 title:{
                     text:"Voltage(V) Current(A)"
                 },
-                range:[-maxV*1.1,maxV*1.1]
+                range:[-maxV*Math.SQRT2,maxV*Math.SQRT2*1.1]
             }
         }
         plot.newPlot( document.getElementById('plot-container'), traces, options , plot_config);
