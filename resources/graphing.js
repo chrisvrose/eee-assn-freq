@@ -21,7 +21,12 @@ $(document).ready(function(){
     })
     ipcRenderer.on('modGR',(e,args)=>{
         // PH - got the required data
-        $('#gC').html(args)
+        str=""
+        console.log("YEET")
+        args.forEach(element => {
+            str= str + `${element[0].V}`
+        });
+        $('#gC').html(`${str}`)
         
     })
 })

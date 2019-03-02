@@ -21,6 +21,17 @@ function initGrapher(functionCall= ()=>{}){
     return graphingwin;
 }
 
+function DeepCompareGS(ob1,ob2){
+    let a = true;
+    a = a && (ob1.V==ob2.V)
+    a = a&& (ob1.L==ob2.L)
+    a = a&& (ob1.C==ob2.C)
+    a = a&& (ob1.R==ob2.R)
+    a = a&& (ob1.F==ob2.F)
+    console.log("A ",a)
+    return a
+}
+
 
 app.on('ready',()=>{
     win = new BrowserWindow({show:false,minWidth:1280,minHeight:720,frame:false,webPreferences:{devTools:true}})
@@ -35,13 +46,14 @@ app.on('ready',()=>{
         // Send the updated module to the master window
         console.log(args[0]+" "+graphingwin)
         if(args[0]&&!graphingwin){
+            
+            graphSet.push(args[1])
             initGrapher(()=>{
                 graphingwin.webContents.send('modGR',graphSet)
             })
             console.log("OPEN")
 
             //Copied from last else
-            graphSet.push(args[1])
         }
         else if(!args[0]&&graphingwin) {
             graphingwin.close()
@@ -49,7 +61,10 @@ app.on('ready',()=>{
             graphSet.length = 0
         }
         else if(graphingwin){
-            graphSet.push(args[1])
+            //if(args[1]!=graphSet[graphSet.length-1])\
+            console.log(graphSet[graphSet.length-1][0]);
+            if(!DeepCompareGS(args[1][0],graphSet[graphSet.length-1][0]))
+                graphSet.push(args[1])
             graphingwin.webContents.send('modGR',graphSet)
         }
         
