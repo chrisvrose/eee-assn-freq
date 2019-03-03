@@ -20,7 +20,7 @@ $(document).ready(function(){
     })
 })
 //Todo - Recieve graphing data array and plot
-
+$(document).ready(()=>{ 
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var i;
@@ -48,4 +48,4 @@ counter += increase;
     //alert( " x : " + x + " y : " + y + " increase : " + counter ) ;
 
 }
-
+})
