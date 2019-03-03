@@ -51,6 +51,7 @@ app.on('ready',()=>{
         else if(graphingwin){
             graphSet.push(args[1])
             graphingwin.webContents.send('modGR',graphSet)
+            graphingwin.focus()
         }
         
         // Send the updates graphset to the plotting window, passing through main as main recieves it anyways
