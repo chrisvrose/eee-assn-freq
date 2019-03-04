@@ -7,7 +7,7 @@ let graphingwin = null;
 graphSet = []
 
 function initGrapher(functionCall= ()=>{}){
-    graphingwin = new BrowserWindow({show:false,minWidth:854,minHeight:480,frame:false,webPreferences:{devTools:true}/*,parent:win*/});
+    graphingwin = new BrowserWindow({show:false,minWidth:854,minHeight:480,frame:false,webPreferences:{devTools:false}/*,parent:win*/});
     graphingwin.loadFile('./resources/grapher.html')
     graphingwin.setMenuBarVisibility(false)
     graphingwin.on('closed',()=>{
@@ -42,7 +42,7 @@ app.on('ready',()=>{
         minHeight:720,
         frame:false,
         webPreferences:{
-            devTools:true
+            devTools:false
         }
     })
     win.loadFile('./resources/index.html')

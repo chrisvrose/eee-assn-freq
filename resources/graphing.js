@@ -38,11 +38,10 @@ $(document).ready(function(){
             math.round(args[args.length-1][1].i*Math.SQRT2,4),
         ]
         const prettyToolTips=[
-            `v = ${prettyVals[4]} * sin(${prettyVals[3]} * x + ${prettyVals[2]})`,
-            `i = ${prettyVals[5]} * sin(${prettyVals[3]} * x)`
+            `v = ${prettyVals[4]} * sin(${prettyVals[3]} * t + ${prettyVals[2]})`,
+            `i = ${prettyVals[5]} * sin(${prettyVals[3]} * t)`
         ]
-        $('#ordered-plots').append(`<li id='plot-list-item'><span title="${prettyToolTips[0]}">V<sub>rms</sub> = ${prettyVals[0]}</span>,<br /><span title="${prettyToolTips[1]}">I<sub>rms</sub> = ${prettyVals[1]}</span>,<br /> &#981; = ${prettyVals[2]}</li>`);
-        //console.log("YEET")
+        $('#ordered-plots').append(`<li id='plot-list-item'><span title="${prettyToolTips[0]}">V<sub>rms</sub> = ${prettyVals[0]} V</span>,<br /><span title="${prettyToolTips[1]}">I<sub>rms</sub> = ${prettyVals[1]} A</span>,<br /> &#981; = ${prettyVals[2]} rad</li>`);
         args.forEach(element => {
             if(element[0].F > maxF) maxF = element[0].F
             if(element[0].V > maxV) maxV = element[0].V
