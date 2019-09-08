@@ -4,7 +4,7 @@ Project for Semester 2 - Program to calculate the effect of change in frequency 
 
 Window uses elements from Material Design.
 
-![alt text](https://github.com/chrisvrose/eee-assn-freq/releases/download/v1.01/Screenshot.png "Screenshot")
+![Image](https://chrisvrose.github.io/static/projects/screenshots/eee-assn-freq.png "Screenshot")
 
 ## Usage
 
