@@ -9,14 +9,27 @@
     <body>
         <div class="container">
             <div class="titleBar">
-                    <div class="titleBarDrag"></div>
+                    <div class="titleBarDrag"><div class="titleBarName">Plotting</div></div>
                     <div class="titleBarButtons">
                             <span class="titleBarMinimize">_</span>
                             <span class="titleBarClose">&times;</span>
                     </div>
             </div>
-            <div class="graphplot">
-                    <canvas id="myCanvas" width="360" height="360" style="border:1px solid #000000;">
+            <div class="grid-item" id="graphContainer">
+                <div class="plot-header">Plot</div>
+                <div id="plot-container"></div>
+            </div>
+            <div class="grid-item" id="graphInfo">
+                <div class="plot-header">Configuration</div>
+                <div class="inputGroup">
+                    <input type="number" value="25" step="1" min="0" required  id="iNC" />
+                    <label for="iNC">Number of cycles</label>
+                </div>
+                <br />
+                <div class="plot-header">Plots</div>
+                <ol id="ordered-plots"></ol>
+                <span id="gC"></span>
+
             </div>
           
         </div>
