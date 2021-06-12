@@ -19,6 +19,6 @@
   "dependencies": {
     "electron": "^9.4.0",
     "jquery": "^3.5.1",
-    "mathjs": "^5.10.3"
+    "mathjs": "^7.5.1"
   }
 }
